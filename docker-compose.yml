@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  rabbitmq:
+    # RabbitMQ with management plugin installed and enabled on port 15762 with default guest/guest
+    # Alpine version size is smaller than others
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq
+#    volumes:
+#      - ./rabbitmq/etc/:/etc/rabbitmq/
+#      - ./rabbitmq/data/:/var/lib/rabbitmq/
+#      - ./rabbitmq/logs/:/var/log/rabbitmq/
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+    ports:
+      - 5672:5672
+      - 15672:15672
